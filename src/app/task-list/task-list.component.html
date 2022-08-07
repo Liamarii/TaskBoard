@@ -1,5 +1,10 @@
 <div class="tasks-container">
-    <div class="tasks-container column">Left</div>
-    <div class="tasks-container column">Middle</div>
-    <div class="tasks-container column">Right</div>
+    <div class="tasks-container column">
+        <div class="add-button" (click)="AddTask('test ')"> Add task </div>
+        <div *ngFor="let element of toDoTasks">
+            {{element}}<br>
+        </div>
+    </div>
+    <div class="tasks-container column"></div>
+    <div class="tasks-container column"></div>
 </div>
