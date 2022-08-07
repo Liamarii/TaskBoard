@@ -4,9 +4,8 @@
     margin: auto;
     color: white;
     box-shadow: 10px black solid;
-    border: 1px solid white;
     border-top: none;
-    height: 90vh;
+    min-height: 90vh;
     display:flex;
     justify-content:space-between;
 }
@@ -14,9 +13,43 @@
 .tasks-container.column
 {
     white-space:nowrap;
-    font-size: x-large;
-    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
     line-height: 2em;
     align-items: center;
     justify-content: center;
+    border: 1px solid white;
+    border-top: none;
+    display:inline-block;
+    overflow-y: scroll;
+    scrollbar-color: white transparent;
+    padding-left: 1em;
+    height: 90vh;
 }
+
+.add-button
+{
+    font-size:14px;
+    font-family:'Droid Serif';
+    text-align:center;
+    color:#FFF;
+    margin-left:15px;
+    padding:6px;
+    background-color:transparent;
+    border: 1px white solid;
+    border-top: none;
+    float:right;
+    z-index:3;
+    display:block;
+    position:relative;
+    height: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    line-height: 2em;
+}
+
+.add-button:hover
+{
+    background-color: white;
+    color: black;
+}
+

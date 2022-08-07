@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent{
+  public toDoTasks:Array<string> = [];
+  count = 1;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  public AddTask(task: string) : void
+  {
+    this.toDoTasks = [...this.toDoTasks, task + this.count.toString()];
+    this.count++;
+  }  
 }
+
