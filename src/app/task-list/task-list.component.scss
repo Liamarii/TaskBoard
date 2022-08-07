@@ -1,0 +1,22 @@
+.tasks-container
+{
+    width: 75%;
+    margin: auto;
+    color: white;
+    box-shadow: 10px black solid;
+    border: 1px solid white;
+    border-top: none;
+    height: 90vh;
+    display:flex;
+    justify-content:space-between;
+}
+
+.tasks-container.column
+{
+    white-space:nowrap;
+    font-size: x-large;
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 2em;
+    align-items: center;
+    justify-content: center;
+}
