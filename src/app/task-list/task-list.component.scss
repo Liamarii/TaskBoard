@@ -16,11 +16,6 @@
     }
 
     > div > span{
-
-        background-color: white;
-        padding: .5em;
-        line-height: .5em;
-        font-weight: lighter;
         display: block;
         border-bottom: black 1px solid;
     }
@@ -71,6 +66,15 @@
         text-decoration: underline;
         text-align: right;
     }
+
+    .heading
+    {
+    color: white;
+    background-color: #67217a;
+    border-radius: 5px;
+    padding: .5em;
+    line-height: 2em;
+    }
 }
 
 #done
@@ -84,4 +88,5 @@
     text-align:right;
     cursor:pointer;
     line-height: 0%;
+    padding: .5em;
 }

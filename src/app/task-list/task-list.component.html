@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class="column">
-        TODO:
+        <span class="heading">TODO</span>
         <span *ngFor="let task of toDoTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'todo')"
@@ -12,13 +12,13 @@
             <input [(ngModel)]="toDoTasks[i]" placeholder="Enter a note">
             </span>
             <div class="button-row">
-            <span class="remove" (click)="removeSelectedTaskFromTaskList(task, toDoTasks)">remove</span>
+            <button class="remove" (click)="removeSelectedTaskFromTaskList(task, toDoTasks)">remove</button>
             </div>  
         </span>
     </div>
     
     <div class="column">
-        DOING:
+        <span class="heading">DOING</span>
         <span *ngFor="let task of doingTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'doing')"
@@ -30,13 +30,13 @@
             <br>
             </span>
             <div class="button-row">
-            <span class="remove" (click)="removeSelectedTaskFromTaskList(task, doingTasks)">remove</span>
+            <button class="remove" (click)="removeSelectedTaskFromTaskList(task, doingTasks)">remove</button>
             </div>
         </span>
     </div>   
         
     <div class="column">
-        DONE:
+        <span class="heading">DONE</span>
         <span *ngFor="let task of doneTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'done')"
@@ -51,7 +51,7 @@
             </div>
         </span>
     </div>
-  </div>
+</div>
 
 
 
