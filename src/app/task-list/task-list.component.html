@@ -1,10 +1,50 @@
-<div class="tasks-container">
-    <div class="tasks-container column">
-        <div class="add-button" (click)="AddTask('test ')"> Add task </div>
-        <div *ngFor="let element of toDoTasks">
-            {{element}}<br>
-        </div>
+
+<div class="container">
+    <div class="column">
+        TODO:
+        <span *ngFor="let task of toDoTasks">
+            <span draggable="true" 
+            (dragstart)="dragging(task, 'todo')"
+            (dragover)="dragover($event, task)" 
+            (drop)="dropping($event)" 
+            class="task"
+            id="todo">
+                {{task}}
+            </span>
+            <span class="remove" (click)="removeSelectedTaskFromTaskList(task, toDoTasks)">remove</span>
+        </span>
     </div>
-    <div class="tasks-container column"></div>
-    <div class="tasks-container column"></div>
-</div>
+    
+    <div class="column">
+        DOING:
+        <span *ngFor="let task of doingTasks">
+            <span draggable="true" 
+            (dragstart)="dragging(task, 'doing')"
+            (dragover)="dragover($event, task)" 
+            (drop)="dropping($event)" 
+            class="task"
+            id="doing">
+                {{task}}
+            </span>
+            <span class="remove" (click)="removeSelectedTaskFromTaskList(task, doingTasks)">remove</span>
+        </span>
+    </div>   
+        
+    <div class="column">
+        DONE:
+        <span *ngFor="let task of doneTasks">
+            <span draggable="true" 
+            (dragstart)="dragging(task, 'done')"
+            (dragover)="dragover($event, task)" 
+            (drop)="dropping($event)"
+            class="task"
+            id="done">
+                {{task}}<br>
+            </span> 
+            <span class="remove" (click)="removeSelectedTaskFromTaskList(task, doneTasks)">remove</span>
+        </span>
+    </div>
+  </div>
+
+
+

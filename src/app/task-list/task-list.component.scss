@@ -1,55 +1,72 @@
-.tasks-container
-{
+.container {        
+    flex-wrap: nowrap;
+    flex-direction: row;
+    display: flex;
     width: 75%;
+    justify-content: space-between; 
     margin: auto;
-    color: white;
-    box-shadow: 10px black solid;
-    border-top: none;
-    min-height: 90vh;
-    display:flex;
-    justify-content:space-between;
+    outline: 1px solid white;
+    
+    > div 
+    {
+        width: 100%;
+        color: black;
+    }
+
+    > div > span{
+
+        background-color: white;
+        padding: .5em;
+        line-height: .5em;
+        font-weight: lighter;
+        display: block;
+        margin-left: 1em;
+        margin-right: 1em;
+        border-bottom: black 1px solid;
+    }
+
+    .column
+    {
+        border-radius: 3px;
+        background-color: white;
+        margin: 1%;
+        text-align: center;
+        height: 100%;
+        border-bottom: white 1px solid;
+        min-height: 5em;
+    }
+
+    .task
+    {
+        width: 100%;
+        line-height: 2em;
+        display: block;
+        padding-bottom: 1.5em;
+        padding-top: 1.5em;
+    }
+
+    .task:hover
+    {
+        background-color: lightgray;
+        cursor: move;
+    }
 }
 
-.tasks-container.column
+#done
 {
-    white-space:nowrap;
-    font-size: large;
-    line-height: 2em;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid white;
-    border-top: none;
-    display:inline-block;
-    overflow-y: scroll;
-    scrollbar-color: white transparent;
-    padding-left: 1em;
-    height: 90vh;
+    color: grey;
+    font-style: italic;
 }
 
-.add-button
+.remove
 {
-    font-size:14px;
-    font-family:'Droid Serif';
-    text-align:center;
-    color:#FFF;
-    margin-left:15px;
-    padding:6px;
-    background-color:transparent;
-    border: 1px white solid;
-    border-top: none;
-    float:right;
-    z-index:3;
-    display:block;
-    position:relative;
-    height: 2em;
-    padding-left: 1em;
-    padding-right: 1em;
-    line-height: 2em;
+    text-align: right;
+    display: block;
+    line-height: 1em;
+    color: gray;
 }
 
-.add-button:hover
+.remove:hover
 {
-    background-color: white;
-    color: black;
+    text-decoration: underline;
 }
-
