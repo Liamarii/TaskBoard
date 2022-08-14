@@ -2,46 +2,53 @@
 <div class="container">
     <div class="column">
         TODO:
-        <span *ngFor="let task of toDoTasks">
+        <span *ngFor="let task of toDoTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'todo')"
             (dragover)="dragover($event, task)" 
             (drop)="dropping($event)" 
             class="task"
             id="todo">
-                {{task}}
+            <input [(ngModel)]="toDoTasks[i]" placeholder="Enter a note">
             </span>
+            <div class="button-row">
             <span class="remove" (click)="removeSelectedTaskFromTaskList(task, toDoTasks)">remove</span>
+            </div>  
         </span>
     </div>
     
     <div class="column">
         DOING:
-        <span *ngFor="let task of doingTasks">
+        <span *ngFor="let task of doingTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'doing')"
             (dragover)="dragover($event, task)" 
             (drop)="dropping($event)" 
             class="task"
             id="doing">
-                {{task}}
+            <input [(ngModel)]="doingTasks[i]" placeholder="Enter a note">
+            <br>
             </span>
+            <div class="button-row">
             <span class="remove" (click)="removeSelectedTaskFromTaskList(task, doingTasks)">remove</span>
+            </div>
         </span>
     </div>   
         
     <div class="column">
         DONE:
-        <span *ngFor="let task of doneTasks">
+        <span *ngFor="let task of doneTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'done')"
             (dragover)="dragover($event, task)" 
             (drop)="dropping($event)"
             class="task"
             id="done">
-                {{task}}<br>
-            </span> 
-            <span class="remove" (click)="removeSelectedTaskFromTaskList(task, doneTasks)">remove</span>
+            <input [(ngModel)]="doneTasks[i]" placeholder="Enter a note">
+            </span>
+            <div class="button-row">
+            <button class="remove" (click)="removeSelectedTaskFromTaskList(task, doneTasks)">remove</button>
+            </div>
         </span>
     </div>
   </div>

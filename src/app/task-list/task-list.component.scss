@@ -11,6 +11,8 @@
     {
         width: 100%;
         color: black;
+        padding: 1em;
+        margin: 1em;
     }
 
     > div > span{
@@ -20,9 +22,14 @@
         line-height: .5em;
         font-weight: lighter;
         display: block;
-        margin-left: 1em;
-        margin-right: 1em;
         border-bottom: black 1px solid;
+    }
+
+    span > input{
+        background-color: transparent;
+        border: none;
+        border-bottom: black solid 1px;
+        text-align: center;
     }
 
     .column
@@ -43,12 +50,26 @@
         display: block;
         padding-bottom: 1.5em;
         padding-top: 1.5em;
+        background-color: white;
     }
 
     .task:hover
     {
-        background-color: lightgray;
         cursor: move;
+    }
+
+    .remove
+    {
+        text-align: right;
+        display: contents;
+        line-height: 1em;
+        color: gray;
+    }
+
+    .remove:hover
+    {
+        text-decoration: underline;
+        text-align: right;
     }
 }
 
@@ -58,15 +79,9 @@
     font-style: italic;
 }
 
-.remove
+.button-row
 {
-    text-align: right;
-    display: block;
-    line-height: 1em;
-    color: gray;
-}
-
-.remove:hover
-{
-    text-decoration: underline;
+    text-align:right;
+    cursor:pointer;
+    line-height: 0%;
 }

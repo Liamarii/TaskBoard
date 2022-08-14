@@ -16,7 +16,6 @@ export class TaskListComponent {
   takenFromList: string = "";
   hoveringOverTask: string = "";
   hoveringOverTaskList: string = "";
-  emptyTaskListText: string = "No tasks";
 
   public dragging(task: string, takenFromList: string) {
       this.currentSelection = task;
@@ -119,7 +118,7 @@ export class TaskListComponent {
         this.toDoTasks = this.toDoTasks.filter(x => x !== task);
         if(this.toDoTasks.length == 0)
         {
-          this.toDoTasks.push(this.emptyTaskListText);
+          this.toDoTasks.push("");
         }
       }
       if(taskList === this.doingTasks)
@@ -127,7 +126,7 @@ export class TaskListComponent {
         this.doingTasks = this.doingTasks.filter(x => x !== task);
         if(this.doingTasks.length == 0)
         {
-          this.doingTasks.push(this.emptyTaskListText);
+          this.doingTasks.push("");
         }
       } 
       if(taskList === this.doneTasks)
@@ -135,7 +134,7 @@ export class TaskListComponent {
         this.doneTasks = this.doneTasks.filter(x => x !== task);
         if(this.doneTasks.length == 0)
         {
-          this.doneTasks.push(this.emptyTaskListText);
+          this.doneTasks.push("");
         }
       } 
   }
@@ -144,32 +143,36 @@ export class TaskListComponent {
   {
     if(this.toDoTasks.length > 0)
     {
-      this.toDoTasks = this.toDoTasks.filter(x => x !== this.emptyTaskListText);
+      this.toDoTasks = this.toDoTasks.filter(x => x !== "");
     }
 
     if(this.toDoTasks.length == 0)
     {
-      this.toDoTasks.push(this.emptyTaskListText);
+      this.toDoTasks.push("");
     }
 
     if(this.doingTasks.length > 0)
     {
-      this.doingTasks = this.doingTasks.filter(x => x !== this.emptyTaskListText);
+      this.doingTasks = this.doingTasks.filter(x => x !== "");
     }
 
     if(this.doingTasks.length == 0)
     {
-      this.doingTasks.push(this.emptyTaskListText);
+      this.doingTasks.push("");
     }
 
     if(this.doneTasks.length > 0)
     {
-      this.doneTasks = this.doneTasks.filter(x => x !== this.emptyTaskListText);
+      this.doneTasks = this.doneTasks.filter(x => x !== "");
     }
 
     if(this.doneTasks.length == 0)
     {
-      this.doneTasks.push(this.emptyTaskListText);
+      this.doneTasks.push("");
     }
   }
+
+  public trackByFn(index: any, item: any) {
+    return index;
+ }
 }
