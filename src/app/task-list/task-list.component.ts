@@ -172,8 +172,7 @@ export class TaskListComponent {
     }
   }
 
-  //returns the unique index of the value
-  trackByFn(index: any, item: any) {
+  public trackByFn(index: any, item: any) {
     return index;
  }
 }
