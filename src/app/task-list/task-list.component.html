@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class="column">
-        TODO:
+        <span class="heading">TODO</span>
         <span *ngFor="let task of toDoTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'todo')"
@@ -18,7 +18,7 @@
     </div>
     
     <div class="column">
-        DOING:
+        <span class="heading">DOING</span>
         <span *ngFor="let task of doingTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'doing')"
@@ -36,7 +36,7 @@
     </div>   
         
     <div class="column">
-        DONE:
+        <span class="heading">DONE</span>
         <span *ngFor="let task of doneTasks let i = index trackBy: trackByFn">
             <span draggable="true" 
             (dragstart)="dragging(task, 'done')"
