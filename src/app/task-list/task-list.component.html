@@ -12,7 +12,7 @@
             <input [(ngModel)]="toDoTasks[i]" placeholder="Enter a note">
             </span>
             <div class="button-row">
-            <span class="remove" (click)="removeSelectedTaskFromTaskList(task, toDoTasks)">remove</span>
+            <button class="remove" (click)="removeSelectedTaskFromTaskList(task, toDoTasks)">remove</button>
             </div>  
         </span>
     </div>
@@ -30,7 +30,7 @@
             <br>
             </span>
             <div class="button-row">
-            <span class="remove" (click)="removeSelectedTaskFromTaskList(task, doingTasks)">remove</span>
+            <button class="remove" (click)="removeSelectedTaskFromTaskList(task, doingTasks)">remove</button>
             </div>
         </span>
     </div>   
@@ -51,7 +51,7 @@
             </div>
         </span>
     </div>
-  </div>
+</div>
 
 
 
