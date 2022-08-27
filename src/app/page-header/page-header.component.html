@@ -1,3 +1,12 @@
 <div class="header">
-{{title | uppercase}}<span class="blinking">|</span>
+    {{title | uppercase}}
+    <input
+    class="input"
+    placeholder="enter task"
+    maxlength="60"
+    #TaskListComponent
+    [(ngModel)]="header"
+    (keyup.enter)="createTask(header)"
+    rows="1"
+    wrap="hard">
 </div>

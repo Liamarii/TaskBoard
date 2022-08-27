@@ -1,57 +1,18 @@
-
 <div class="container">
-    <div class="column">
-        <span class="heading">TODO</span>
-        <span *ngFor="let task of toDoTasks let i = index trackBy: trackByFn">
-            <span draggable="true" 
-            (dragstart)="dragging(task, 'todo')"
-            (dragover)="dragover($event, task)" 
-            (drop)="dropping($event)" 
-            class="task"
-            id="todo">
-            <input [(ngModel)]="toDoTasks[i]" placeholder="Enter a note">
+    <ng-container *ngFor="let taskList of taskLists let taskListIndex = index trackBy : trackByFn">
+        <div class="column" id={{taskList.title}} (dragover)="dragover($event)" (drop)="dropping(taskListIndex)">
+            <span class="column__header">{{taskList.title | uppercase}}</span>
+            <span *ngFor="let task of taskLists[taskListIndex].tasks let taskIndex = index trackBy : trackByFn" (dragstart)="dragging(task, taskListIndex)">
+                <span class="task" draggable="true">
+                    <div class="task__textArea" attr.contenteditable={{taskEditable}} name="fieldName" ngDefaultControl [(ngModel)]="taskContent">
+                        <h2>{{taskLists[taskListIndex].tasks[taskIndex].content}}</h2>
+                    </div>
+                    <br>
+                    <button class="button" (click)="editTask()">edit</button>
+                    <button class="button" (click)="saveTask()">save</button>
+                    <button class="button" (click)="removeTask(taskLists[taskListIndex].tasks[taskIndex].id, taskListIndex)">remove</button>
+                </span>
             </span>
-            <div class="button-row">
-            <button class="remove" (click)="removeSelectedTaskFromTaskList(task, toDoTasks)">remove</button>
-            </div>  
-        </span>
-    </div>
-    
-    <div class="column">
-        <span class="heading">DOING</span>
-        <span *ngFor="let task of doingTasks let i = index trackBy: trackByFn">
-            <span draggable="true" 
-            (dragstart)="dragging(task, 'doing')"
-            (dragover)="dragover($event, task)" 
-            (drop)="dropping($event)" 
-            class="task"
-            id="doing">
-            <input [(ngModel)]="doingTasks[i]" placeholder="Enter a note">
-            <br>
-            </span>
-            <div class="button-row">
-            <button class="remove" (click)="removeSelectedTaskFromTaskList(task, doingTasks)">remove</button>
-            </div>
-        </span>
-    </div>   
-        
-    <div class="column">
-        <span class="heading">DONE</span>
-        <span *ngFor="let task of doneTasks let i = index trackBy: trackByFn">
-            <span draggable="true" 
-            (dragstart)="dragging(task, 'done')"
-            (dragover)="dragover($event, task)" 
-            (drop)="dropping($event)"
-            class="task"
-            id="done">
-            <input [(ngModel)]="doneTasks[i]" placeholder="Enter a note">
-            </span>
-            <div class="button-row">
-            <button class="remove" (click)="removeSelectedTaskFromTaskList(task, doneTasks)">remove</button>
-            </div>
-        </span>
-    </div>
+        </div>
+    </ng-container>   
 </div>
-
-
-

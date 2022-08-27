@@ -1,5 +1,4 @@
-.header
-{
+.header{
     width: 73%;
     margin: auto;
     text-align: left;
@@ -10,16 +9,28 @@
     padding-left: 2%;
     background-color: #2d2d2d;
     font-weight: normal;
+    height:2em;
+    display:flex;
+    outline-width: 0;
 }
 
-.blinking
-{
-    animation: blinker 1s linear infinite;
-    font-size: 1em; 
+.input{
+    font-weight: normal;
+    background-color: transparent;
+    box-sizing: border-box;
+    height: 100%;
+    border: none;
+    resize: none;
+    color: #23d18b;
+    display: flex;
+    padding: 0.7em 0;
+    padding-left: 0.5em;
+    width: 80%;
+    font-size: 1em;
+    overflow: hidden;
+    font-weight: normal;
 }
 
-@keyframes blinker {
-    50% {
-      opacity: 0;
-    }
+.input:focus{
+    outline-width: 0;
 }
