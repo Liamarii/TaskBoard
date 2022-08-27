@@ -6,82 +6,67 @@
     justify-content: space-between; 
     margin: auto;
     outline: 1px solid white;
-    
-    > div 
-    {
-        width: 100%;
-        color: black;
-        padding: 1em;
-        margin: 1em;
-    }
+}
 
-    > div > span{
+.column {
+    background-color: white;
+    width: 100%;
+    margin: 5px;
+    text-align: center;
+    height: 100vh fit-content;
+    min-height: 10em;
 
-        background-color: white;
-        padding: .5em;
-        line-height: .5em;
-        font-weight: lighter;
-        display: block;
-        border-bottom: black 1px solid;
-    }
-
-    span > input{
-        background-color: transparent;
-        border: none;
-        border-bottom: black solid 1px;
-        text-align: center;
-    }
-
-    .column
-    {
-        border-radius: 3px;
-        background-color: white;
-        margin: 1%;
-        text-align: center;
-        height: 100%;
-        border-bottom: white 1px solid;
-        min-height: 5em;
-    }
-
-    .task
-    {
-        width: 100%;
+    &__header {
+        color: white;
+        background-color: #67217a;
         line-height: 2em;
+        width: 100%;
         display: block;
-        padding-bottom: 1.5em;
-        padding-top: 1.5em;
-        background-color: white;
     }
+}
 
-    .task:hover
-    {
+.task {
+    width:auto;
+    line-height: 1em;
+    display: block;
+    padding-top: 1.5em;
+    border: 1px solid black;
+    background-color: white;
+    margin: 1em;
+
+    &:hover {
         cursor: move;
+        background-color: lightyellow;
     }
-
-    .remove
-    {
-        text-align: right;
-        display: contents;
+    
+    &__textArea {
+        resize: none;
+        width: 80%;
+        min-height: 4em;
         line-height: 1em;
-        color: gray;
+        color: black;
+        text-align: center;
+        border: #67217a dashed 1px;
+        margin: auto;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        height: 100%;
+        display: inline-block;
     }
-
-    .remove:hover
-    {
-        text-decoration: underline;
-        text-align: right;
+    
+    &:focus {
+        outline:none;
     }
 }
 
-#done
-{
-    color: grey;
-    font-style: italic;
-}
+.button {
+    line-height: 1em;
+    color: gray;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    margin-left: 5px;
 
-.button-row
-{
-    text-align:right;
-    cursor:pointer;
-    line-height: 0%;
+    &:hover {
+        text-decoration: underline;  
+    }
 }

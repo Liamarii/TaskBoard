@@ -1,178 +1,83 @@
-import {
-  Component
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { v4 as uuidv4} from 'uuid';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent {
-  public toDoTasks: Array <string> = ["item 1", "item 2", "item 3", "item 4", "item 5"];
-  public doingTasks: Array <string> = ["item 1", "item 2", "item 3", "item 4"];
-  public doneTasks: Array <string> = ["item 1", "item 2"];
 
-  currentSelection: string = "";
-  takenFromList: string = "";
-  hoveringOverTask: string = "";
-  hoveringOverTaskList: string = "";
+export class TaskListComponent implements OnInit {
+  taskListIndex: number = 0;
+  taskLists : Array<TaskList> = [];
+  task : Task = new Task();
+  taskContent : string = "";
+  taskEditable : boolean = false;
 
-  public dragging(task: string, takenFromList: string) {
-      this.currentSelection = task;
-      this.takenFromList = takenFromList;
+  constructor(private _taskService: TaskService){}
+
+  ngOnInit() {
+    this._taskService.currentMessage.subscribe(message => this.taskContent = message);
+    this.taskLists = [new TaskList(), new TaskList(), new TaskList()];
+    this.taskLists[0].title = "Todo";
+    this.taskLists[1].title = "Doing";
+    this.taskLists[2].title = "Done";
+    this._taskService.currentMessage.subscribe(message => {this.addTask(message)});
   }
 
-  public dragover(event: Event, hoveringOverTask: string) {
-      event.preventDefault();
-      this.hoveringOverTask = hoveringOverTask;
-  }
-
-  public dropping(event: Event) {
-      event.preventDefault();
-      let targettedTaskListId = (event.target as HTMLElement).id;
-
-      if(this.takenFromList != targettedTaskListId){
-        this.moveTaskToDifferentTaskList(targettedTaskListId);
-      }
-      else{
-      switch (this.takenFromList) {
-        case 'todo':
-          this.reorderTaskInTaskList('todo');
-          break;
-        case 'doing':
-          this.reorderTaskInTaskList('doing');
-          break;
-        case 'done':
-          this.reorderTaskInTaskList('done');
-          break;
-      }
-    }
-  }
-
-  private reorderTaskInTaskList(targettedTaskList: string)
-  {
-    if (this.takenFromList == 'todo' && targettedTaskList == 'todo')
-    {     
-      let hoverIndex = this.toDoTasks.indexOf(this.hoveringOverTask);
-      this.removeDraggedTaskFromTaskList();
-      this.toDoTasks.splice(hoverIndex, 0, this.currentSelection);
-    }
-    if (this.takenFromList == 'doing' && targettedTaskList == 'doing')
-    {        
-      let hoverIndex = this.doingTasks.indexOf(this.hoveringOverTask);
-      this.removeDraggedTaskFromTaskList();
-      this.doingTasks.splice(hoverIndex, 0, this.currentSelection);
-    }
-    if (this.takenFromList == 'done' && targettedTaskList == 'done')
-    {
-      let hoverIndex = this.doneTasks.indexOf(this.hoveringOverTask);
-      this.removeDraggedTaskFromTaskList();
-      this.doneTasks.splice(hoverIndex, 0, this.currentSelection);
-    }
-  }
-
-  private moveTaskToDifferentTaskList(targettedTaskList : string)
-  {
-    if(targettedTaskList == 'todo' && this.toDoTasks.indexOf(this.currentSelection) == -1)
-    {
-      let hoverIndex = this.toDoTasks.indexOf(this.hoveringOverTask);
-      this.removeDraggedTaskFromTaskList();
-      this.toDoTasks.splice(hoverIndex, 0, this.currentSelection);
-      this.addPlaceholderTask();
-    }
-    if(targettedTaskList == 'doing' && this.doingTasks.indexOf(this.currentSelection) == -1)
-    {
-      let hoverIndex = this.doingTasks.indexOf(this.hoveringOverTask);
-      this.removeDraggedTaskFromTaskList();
-      this.doingTasks.splice(hoverIndex, 0, this.currentSelection);
-      this.addPlaceholderTask();
-    }
-    if(targettedTaskList == 'done' && this.doneTasks.indexOf(this.currentSelection) == -1)
-    {
-      let hoverIndex = this.doneTasks.indexOf(this.hoveringOverTask);
-      this.removeDraggedTaskFromTaskList();
-      this.doneTasks.splice(hoverIndex, 0, this.currentSelection);
-      this.addPlaceholderTask();
-    }
-  }
-
-  private removeDraggedTaskFromTaskList()
-  {    
-    switch (this.takenFromList) {
-      case 'todo':
-        this.toDoTasks = this.toDoTasks.filter(x => x !== this.currentSelection);
-        break;
-        case 'doing':
-        this.doingTasks = this.doingTasks.filter(x => x !==  this.currentSelection);
-        break;
-        case 'done':
-        this.doneTasks = this.doneTasks.filter(x => x !==  this.currentSelection);
-        break;
-    }
-  }
-
-  public removeSelectedTaskFromTaskList(task: string, taskList: Array<string>)
-  {    
-      if(taskList === this.toDoTasks)
-      {
-        this.toDoTasks = this.toDoTasks.filter(x => x !== task);
-        if(this.toDoTasks.length == 0)
-        {
-          this.toDoTasks.push("");
-        }
-      }
-      if(taskList === this.doingTasks)
-      {
-        this.doingTasks = this.doingTasks.filter(x => x !== task);
-        if(this.doingTasks.length == 0)
-        {
-          this.doingTasks.push("");
-        }
-      } 
-      if(taskList === this.doneTasks)
-      {
-        this.doneTasks = this.doneTasks.filter(x => x !== task);
-        if(this.doneTasks.length == 0)
-        {
-          this.doneTasks.push("");
-        }
-      } 
-  }
-
-  private addPlaceholderTask()
-  {
-    if(this.toDoTasks.length > 0)
-    {
-      this.toDoTasks = this.toDoTasks.filter(x => x !== "");
-    }
-
-    if(this.toDoTasks.length == 0)
-    {
-      this.toDoTasks.push("");
-    }
-
-    if(this.doingTasks.length > 0)
-    {
-      this.doingTasks = this.doingTasks.filter(x => x !== "");
-    }
-
-    if(this.doingTasks.length == 0)
-    {
-      this.doingTasks.push("");
-    }
-
-    if(this.doneTasks.length > 0)
-    {
-      this.doneTasks = this.doneTasks.filter(x => x !== "");
-    }
-
-    if(this.doneTasks.length == 0)
-    {
-      this.doneTasks.push("");
-    }
-  }
-
-  public trackByFn(index: any, item: any) {
+  public trackByFn(index: any) {
     return index;
- }
+  }
+
+  dragging(task: Task, taskListIndex: number){
+    this.task = task;
+    this.task.content = task.content;
+    this.taskListIndex = taskListIndex;
+  }
+
+  dragover(event: Event){
+    event.preventDefault();
+  }
+
+  dropping(targetTaskListId: number){
+    this.taskLists[this.taskListIndex].tasks = this.taskLists[this.taskListIndex].tasks.filter(x => x.id !== this.task.id);
+    this.taskLists[targetTaskListId].tasks.push(this.task);
+  }
+
+  removeTask(taskId: string, taskListIndex: number){
+    this.taskLists[taskListIndex].tasks = this.taskLists[taskListIndex].tasks.filter(x => x.id !== taskId);
+  }
+
+  addTask(message: string){
+    if(message !== '')
+    {
+      let task = new Task()
+      {
+        task.content = message;
+        task.id = uuidv4().toString();
+      };
+      this.taskLists[0].tasks.push(task);
+    }
+  }
+
+  editTask(){
+    this.taskEditable = !this.taskEditable;
+    return this.taskEditable;
+  }
+
+  saveTask(){
+    alert('working on it');
+  }
+}
+
+
+class TaskList{
+  public tasks: Array<Task> = [];
+  public title: string = "";
+}
+
+class Task{
+  public content: string = "";
+  public id: string = "";
 }
