@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService {
+export class HeaderService {
   private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
   
