@@ -12,7 +12,6 @@
     background-color: white;
     width: 100%;
     margin: 5px;
-    text-align: center;
     height: 100vh fit-content;
     min-height: 10em;
 
@@ -22,17 +21,18 @@
         line-height: 2em;
         width: 100%;
         display: block;
+        text-align: center;
     }
 }
 
 .task {
     width:auto;
     line-height: 1em;
-    display: block;
-    padding-top: 1.5em;
     border: 1px solid black;
-    background-color: white;
     margin: 1em;
+    background-color: white; 
+    display: grid;
+    padding: 2em 2em 0em 2em;
 
     &:hover {
         cursor: move;
@@ -41,32 +41,36 @@
     
     &__textArea {
         resize: none;
-        width: 80%;
-        min-height: 4em;
-        line-height: 1em;
+        width: inherit;
         color: black;
         text-align: center;
         border: #67217a dashed 1px;
-        margin: auto;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        height: 100%;
-        display: inline-block;
+        font-size: x-large;
+        padding: 1em;
+        line-height: 1em;
     }
-    
+
     &:focus {
         outline:none;
     }
-}
 
-.button {
-    line-height: 1em;
-    color: gray;
-    margin-top: 1.25em;
-    margin-bottom: 1.25em;
-    margin-left: 5px;
+    &__buttonsRow {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: right;
+    }
 
-    &:hover {
-        text-decoration: underline;  
+    &__button{
+        line-height: 1em;
+        color: gray;
+        margin-left: 5px;
+    
+        &:hover {
+            text-decoration: underline;  
+        }  
     }
 }
+
+
+
+

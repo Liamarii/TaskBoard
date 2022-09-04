@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { v4 as uuidv4} from 'uuid';
-import { TaskService } from '../task.service';
+import { HeaderService } from '../header/header.service';
 
 @Component({
-  selector: 'app-task-list',
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  selector: 'app-taskListsContainer',
+  templateUrl: './taskListsContainer.component.html',
+  styleUrls: ['./taskListsContainer.component.scss']
 })
 
-export class TaskListComponent implements OnInit {
+export class TaskListsContainerComponent implements OnInit {
   taskListIndex: number = 0;
   taskLists : Array<TaskList> = [];
   task : Task = new Task();
+  headerInput : string = "";
   taskContent : string = "";
-  taskEditable : boolean = false;
+  editableTaskId : string = "";
 
-  constructor(private _taskService: TaskService){}
+  constructor(private _headerService: HeaderService){}
 
   ngOnInit() {
-    this._taskService.currentMessage.subscribe(message => this.taskContent = message);
+    this._headerService.currentMessage.subscribe(message => this.headerInput = message);
     this.taskLists = [new TaskList(), new TaskList(), new TaskList()];
     this.taskLists[0].title = "Todo";
     this.taskLists[1].title = "Doing";
     this.taskLists[2].title = "Done";
-    this._taskService.currentMessage.subscribe(message => {this.addTask(message)});
+    this._headerService.currentMessage.subscribe(message => {this.addTask(message)});
   }
 
   public trackByFn(index: any) {
@@ -61,16 +62,18 @@ export class TaskListComponent implements OnInit {
     }
   }
 
-  editTask(){
-    this.taskEditable = !this.taskEditable;
-    return this.taskEditable;
+  editTask(taskId : string){
+    this.editableTaskId = taskId;
   }
 
-  saveTask(){
-    alert('working on it');
+  taskIsEditable(taskId : string){
+    return taskId === this.editableTaskId;
+  }
+
+  saveTask(content: string){
+    console.log(content);
   }
 }
-
 
 class TaskList{
   public tasks: Array<Task> = [];

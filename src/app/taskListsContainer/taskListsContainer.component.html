@@ -1,0 +1,21 @@
+<div class="container">
+    <ng-container *ngFor="let taskList of taskLists let taskListIndex = index trackBy : trackByFn">
+        <div class="column" id={{taskList.title}} (dragover)="dragover($event)" (drop)="dropping(taskListIndex)">
+            <span class="column__header">{{taskList.title | uppercase}}</span>
+            <span *ngFor="let task of taskLists[taskListIndex].tasks let taskIndex = index trackBy : trackByFn" (dragstart)="dragging(task, taskListIndex)">
+                <div class="task" draggable="true">
+                    <div class="task__textArea" attr.contenteditable={{taskIsEditable(task.id)}} ngDefaultControl [(ngModel)]="headerInput">
+                        <div ngDefaultControl [(ngModel)]="taskContent">
+                        {{taskLists[taskListIndex].tasks[taskIndex].content}}
+                        </div>
+                    </div>
+                    <div class="task__buttonsRow">
+                        <button class="task__button" (click)="editTask(task.id)">edit</button>
+                        <button class="task__button" (click)="saveTask(task.id)">save</button>
+                        <button class="task__button" (click)="removeTask(taskLists[taskListIndex].tasks[taskIndex].id, taskListIndex)">remove</button>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </ng-container>
+</div>
