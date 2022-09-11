@@ -1,6 +1,23 @@
 # TaskBoard
 
+## Summary
+This project is a task board with with three columns of TODO, DOING and DONE.
+
+## About
+The header is an input field which allows users to enter a new task on pressing enter and will create the task in the TODO column.
+A task can be dragged to any column or deleted using the remove button within the task.
+The height of the task board is dependent on how many tasks are contained but does have a minimum height.
+The aim of this project was to build a task board without just pulling in a pre-made angular material.
+
+The project uses the Angular framework and is written in JavaScript with TypeScript type safety with BEM style SCSS.
+
+
+![image](https://user-images.githubusercontent.com/39436443/189532754-191b3e11-c01f-4e5c-9f00-e809c7a82536.png)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
+
+## TODO
+* Add supporting tests.
+* Allow tasks to be edited.
 
 ## Development server
 
