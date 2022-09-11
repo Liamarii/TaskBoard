@@ -1,7 +1,7 @@
 # TaskBoard
 
 ## Summary
-This project is a task board with with three columns of TODO, DOING and DONE.
+This project is a task board with three columns of TODO, DOING and DONE.
 
 ## About
 The header is an input field which allows users to enter a new task on pressing enter and will create the task in the TODO column.
