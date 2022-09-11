@@ -1,12 +1,12 @@
 <div class="header">
-    {{title | uppercase}}
-    <input
+  {{ title | uppercase }}
+  <input
     class="input"
     placeholder="enter task"
     maxlength="60"
-    #TaskListsComponent
     [(ngModel)]="header"
     (keyup.enter)="createTask(header)"
     rows="1"
-    wrap="hard">
+    wrap="hard"
+  />
 </div>

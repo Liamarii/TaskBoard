@@ -1,0 +1,26 @@
+.container {
+  flex-wrap: nowrap;
+  flex-direction: row;
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+  margin: auto;
+  outline: 1px solid white;
+}
+
+.column {
+  background-color: white;
+  width: 100%;
+  margin: 5px;
+  height: 100vh fit-content;
+  min-height: 10em;
+
+  &__header {
+    color: white;
+    background-color: #67217a;
+    line-height: 2em;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+}

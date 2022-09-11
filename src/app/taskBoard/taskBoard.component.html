@@ -1,0 +1,12 @@
+<div class="container">
+  <ng-container *ngFor="let taskList of taskLists">
+    <div
+      class="column"
+      (dragover)="dragover($event)"
+      (drop)="updateTask(taskList)"
+    >
+      <span class="column__header">{{ taskList.Name | uppercase }}</span>
+      <app-taskList [taskList]="taskList"></app-taskList>
+    </div>
+  </ng-container>
+</div>

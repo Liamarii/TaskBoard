@@ -1,10 +1,20 @@
 $primary-font-family: Cascadia Code;
+$primary-font-colour: #23d18b;
 
-body{
-    background-color: #303a4a;
-    color: white;
-    font-family: $primary-font-family;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+body {
+  background-color: #303a4a;
+  color: white;
+  font-family: $primary-font-family;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.comment {
+  font-size: medium;
+  font-family: $primary-font-family;
+}
+
+input:focus {
+  outline: 0;
 }

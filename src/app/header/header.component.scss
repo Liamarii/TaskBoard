@@ -1,36 +1,35 @@
-.header{
-    width: 73%;
-    margin: auto;
-    text-align: left;
-    font-size: 2em;
-    line-height: 2em;
-    color: #23d18b;
-    border: 1px solid white;
-    padding-left: 2%;
-    background-color: #2d2d2d;
-    font-weight: normal;
-    height:2em;
-    display:flex;
-    outline-width: 0;
+.header {
+  width: 73%;
+  margin: auto;
+  text-align: left;
+  font-size: 2em;
+  line-height: 2em;
+  color: #23d18b;
+  border: 1px solid white;
+  padding-left: 2%;
+  background-color: #2d2d2d;
+  font-weight: normal;
+  height: 2em;
+  display: flex;
+  outline-width: 0;
 }
 
-.input{
-    font-weight: normal;
-    background-color: transparent;
-    box-sizing: border-box;
-    height: 100%;
-    border: none;
-    resize: none;
-    color: #23d18b;
-    display: flex;
-    padding: 0.7em 0;
-    padding-left: 0.5em;
-    width: 100%;
-    font-size: 1em;
-    overflow: hidden;
-    font-weight: normal;
+.input {
+  font-weight: normal;
+  background-color: transparent;
+  box-sizing: border-box;
+  height: 100%;
+  border: none;
+  resize: none;
+  color: #23d18b;
+  display: flex;
+  padding: 0.7em 0;
+  padding-left: 0.5em;
+  width: 100%;
+  font-size: 1em;
+  overflow: hidden;
 }
 
-.input:focus{
-    outline-width: 0;
+.input:focus {
+  outline-width: 0;
 }
