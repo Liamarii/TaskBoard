@@ -4,18 +4,16 @@ import { HeaderService } from './header.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-
 export class HeaderComponent {
-  header: string = "";
-  title = "//TODO:"
+  header: string = '';
+  title = '//TODO:';
 
-  constructor(private data : HeaderService){}
+  constructor(private _headerService: HeaderService) {}
 
-  public createTask(taskContent: string)
-  {
-    this.data.changeMessage(taskContent);
+  public createTask(taskContent: string) {
+    this._headerService.changeMessage(taskContent);
     this.header = '';
   }
 }

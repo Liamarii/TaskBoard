@@ -1,0 +1,9 @@
+<span *ngFor="let task of taskList.Tasks">
+  <app-task
+    [task]="task"
+    (deleted)="delete(task.Id)"
+    (dragstart)="drag(task, taskList)"
+    (dragover)="dragover($event)"
+  >
+  </app-task>
+</span>

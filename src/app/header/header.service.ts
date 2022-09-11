@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HeaderService {
-  private messageSource = new BehaviorSubject('');
+  private messageSource = new ReplaySubject<string>();
   currentMessage = this.messageSource.asObservable();
-  
-  changeMessage(message: string){
-    this.messageSource.next(message)
+
+  changeMessage(message: string) {
+    this.messageSource.next(message);
   }
 }
