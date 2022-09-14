@@ -11,8 +11,7 @@ The aim of this project was to build a task board without just pulling in a pre-
 
 The project uses the Angular framework and is written in JavaScript with TypeScript type safety with BEM style SCSS.
 
-
-![image](https://user-images.githubusercontent.com/39436443/189532754-191b3e11-c01f-4e5c-9f00-e809c7a82536.png)
+![image](https://user-images.githubusercontent.com/39436443/190271286-bb354409-db2e-4f6b-8197-783d69b7e68e.png)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
 
 ## TODO
