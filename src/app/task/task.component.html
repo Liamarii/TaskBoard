@@ -1,8 +1,15 @@
 <div class="task" draggable="true">
-  <div class="task__textArea">
-    <span class="comment">{{ task.Content }}</span>
-  </div>
+  <textarea
+    class="task__textArea"
+    [innerHTML]="[task.Content]"
+    [(ngModel)]="task.Content"
+    [disabled]="disabled"
+    rows="1"
+    wrap="hard"
+    maxlength="35"
+  ></textarea>
   <div class="task__buttonsRow">
+    <button class="task__button" (click)="edit()">edit</button>
     <button class="task__button" (click)="remove()">remove</button>
   </div>
 </div>

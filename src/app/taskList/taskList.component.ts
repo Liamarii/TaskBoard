@@ -9,7 +9,7 @@ import { TaskListService } from './taskList.service';
   templateUrl: './taskList.component.html',
 })
 export class taskListComponent implements OnInit {
-  @Input() taskList: TaskList = new TaskList();
+  @Input() TaskList: TaskList = new TaskList();
 
   constructor(
     private _headerService: HeaderService,
@@ -18,7 +18,7 @@ export class taskListComponent implements OnInit {
 
   ngOnInit(): void {
     this._headerService.currentMessage.subscribe((message) =>
-      this.taskList.addTask(message)
+      this.TaskList.addTask(message)
     );
   }
 
@@ -27,7 +27,7 @@ export class taskListComponent implements OnInit {
   }
 
   delete(taskId: string) {
-    this.taskList.Tasks = this.taskList.Tasks.filter(
+    this.TaskList.Tasks = this.TaskList.Tasks.filter(
       (Task) => Task.Id != taskId
     );
   }

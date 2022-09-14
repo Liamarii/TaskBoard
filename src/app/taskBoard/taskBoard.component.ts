@@ -9,21 +9,21 @@ import { TaskListService } from '../taskList/taskList.service';
   styleUrls: ['./taskBoard.component.scss'],
 })
 export class TaskBoardComponent {
-  selectedTask: Task = new Task();
-  sourceTaskList: TaskList = new TaskList();
-  columnNames: Array<string> = ['todo', 'doing', 'done'];
-  taskLists: Array<TaskList> = [
-    new TaskList(this.columnNames[0]),
-    new TaskList(this.columnNames[1]),
-    new TaskList(this.columnNames[2]),
+  public SelectedTask: Task = new Task();
+  public SourceTaskList: TaskList = new TaskList();
+  public ColumnNames: Array<string> = ['todo', 'doing', 'done'];
+  public TaskLists: Array<TaskList> = [
+    new TaskList(this.ColumnNames[0]),
+    new TaskList(this.ColumnNames[1]),
+    new TaskList(this.ColumnNames[2]),
   ];
 
   constructor(private _taskListService: TaskListService) {}
 
   ngOnInit(): void {
-    this._taskListService.Task.subscribe((task) => (this.selectedTask = task));
+    this._taskListService.Task.subscribe((task) => (this.SelectedTask = task));
     this._taskListService.Source.subscribe(
-      (taskList) => (this.sourceTaskList = taskList)
+      (taskList) => (this.SourceTaskList = taskList)
     );
   }
 
@@ -32,9 +32,9 @@ export class TaskBoardComponent {
   }
 
   updateTask(taskList: TaskList) {
-    this.sourceTaskList.Tasks = this.sourceTaskList.Tasks.filter(
-      (x) => x != this.selectedTask
+    this.SourceTaskList.Tasks = this.SourceTaskList.Tasks.filter(
+      (x) => x != this.SelectedTask
     );
-    taskList.Tasks.push(this.selectedTask);
+    taskList.Tasks.push(this.SelectedTask);
   }
 }

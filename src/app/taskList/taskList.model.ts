@@ -6,7 +6,7 @@ export class TaskList {
   public Tasks: Array<Task> = [];
 
   public addTask(message: string) {
-    if (this.Name.toLowerCase() == 'todo') {
+    if (this.Name.toLowerCase() == 'todo' && message != '') {
       let task = new Task(uuid(), message);
       this.Tasks.push(task);
     }
