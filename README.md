@@ -14,10 +14,6 @@ The project uses the Angular framework and is written in JavaScript with TypeScr
 ![image](https://user-images.githubusercontent.com/39436443/190271286-bb354409-db2e-4f6b-8197-783d69b7e68e.png)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
 
-## TODO
-* Add supporting tests.
-* Allow tasks to be edited.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
