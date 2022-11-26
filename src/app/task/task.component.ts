@@ -9,13 +9,15 @@ import { Task } from './task.model';
 export class TaskComponent {
   @Input() task: Task = new Task();
   @Output() deleted = new EventEmitter<boolean>();
-  public disabled: boolean = true;
+  disabled: boolean = true;
+  button: any;
 
   remove() {
     this.deleted.emit(true);
   }
 
-  edit() {
+  edit(element: any) {
+    element.textContent = this.disabled ? 'cancel' : 'edit';
     this.disabled = !this.disabled;
   }
 }

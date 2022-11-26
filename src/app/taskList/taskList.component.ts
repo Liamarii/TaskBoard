@@ -12,17 +12,17 @@ export class taskListComponent implements OnInit {
   @Input() TaskList: TaskList = new TaskList();
 
   constructor(
-    private _headerService: HeaderService,
-    private _taskListService: TaskListService
+    private headerService: HeaderService,
+    private taskListService: TaskListService
   ) {}
 
   ngOnInit(): void {
-    this._headerService.currentMessage.subscribe((message) =>
+    this.headerService.currentMessage.subscribe((message) =>
       this.TaskList.addTask(message)
     );
   }
 
-  public trackByFn(index: any) {
+  trackByFn(index: any) {
     return index;
   }
 
@@ -37,7 +37,7 @@ export class taskListComponent implements OnInit {
   }
 
   drag(task: Task, taskList: TaskList) {
-    this._taskListService.setSelectedTask(task);
-    this._taskListService.setSelectedTaskList(taskList);
+    this.taskListService.setSelectedTask(task);
+    this.taskListService.setSelectedTaskList(taskList);
   }
 }

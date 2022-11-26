@@ -7,13 +7,13 @@ import { HeaderService } from './header.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public Header: string = '';
-  public Title = '//TODO:';
+  Header: string = '';
+  Title = '//TODO:';
 
-  constructor(private _headerService: HeaderService) {}
+  constructor(private headerService: HeaderService) {}
 
-  public createTask(taskContent: string) {
-    this._headerService.changeMessage(taskContent);
+  createTask(taskContent: string) {
+    this.headerService.getMessage(taskContent);
     this.Header = '';
   }
 }
