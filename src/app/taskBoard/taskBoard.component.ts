@@ -9,20 +9,20 @@ import { TaskListService } from '../taskList/taskList.service';
   styleUrls: ['./taskBoard.component.scss'],
 })
 export class TaskBoardComponent {
-  public SelectedTask: Task = new Task();
-  public SourceTaskList: TaskList = new TaskList();
-  public ColumnNames: Array<string> = ['todo', 'doing', 'done'];
-  public TaskLists: Array<TaskList> = [
+  SelectedTask: Task = new Task();
+  SourceTaskList: TaskList = new TaskList();
+  ColumnNames: Array<string> = ['todo', 'doing', 'done'];
+  TaskLists: Array<TaskList> = [
     new TaskList(this.ColumnNames[0]),
     new TaskList(this.ColumnNames[1]),
     new TaskList(this.ColumnNames[2]),
   ];
 
-  constructor(private _taskListService: TaskListService) {}
+  constructor(private taskListService: TaskListService) {}
 
   ngOnInit(): void {
-    this._taskListService.Task.subscribe((task) => (this.SelectedTask = task));
-    this._taskListService.Source.subscribe(
+    this.taskListService.Task.subscribe((task) => (this.SelectedTask = task));
+    this.taskListService.Source.subscribe(
       (taskList) => (this.SourceTaskList = taskList)
     );
   }

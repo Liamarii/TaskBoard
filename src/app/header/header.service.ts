@@ -8,7 +8,7 @@ export class HeaderService {
   private messageSource = new ReplaySubject<string>();
   currentMessage = this.messageSource.asObservable();
 
-  changeMessage(message: string) {
+  getMessage(message: string) {
     this.messageSource.next(message);
   }
 }

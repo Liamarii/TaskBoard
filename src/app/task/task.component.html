@@ -1,5 +1,5 @@
 <div class="task" draggable="true">
-  <textarea
+  <input
     class="task__textArea"
     [innerHTML]="[task.Content]"
     [(ngModel)]="task.Content"
@@ -7,9 +7,9 @@
     rows="1"
     wrap="hard"
     maxlength="35"
-  ></textarea>
+  />
   <div class="task__buttonsRow">
-    <button class="task__button" (click)="edit()">edit</button>
+    <button class="task__button" (click)="edit($event.target)">edit</button>
     <button class="task__button" (click)="remove()">remove</button>
   </div>
 </div>

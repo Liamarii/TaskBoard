@@ -7,17 +7,17 @@ import { Task } from '../task/task.model';
   providedIn: 'root',
 })
 export class TaskListService {
-  private _selectedTaskList = new ReplaySubject<TaskList>();
-  private _selectedTask = new ReplaySubject<Task>();
+  private selectedTaskList = new ReplaySubject<TaskList>();
+  private selectedTask = new ReplaySubject<Task>();
 
-  public Task = this._selectedTask.asObservable();
-  public Source = this._selectedTaskList.asObservable();
+  public Task = this.selectedTask.asObservable();
+  public Source = this.selectedTaskList.asObservable();
 
   setSelectedTaskList(selectedTaskList: TaskList) {
-    this._selectedTaskList.next(selectedTaskList);
+    this.selectedTaskList.next(selectedTaskList);
   }
 
   setSelectedTask(selectedTask: Task) {
-    this._selectedTask.next(selectedTask);
+    this.selectedTask.next(selectedTask);
   }
 }
